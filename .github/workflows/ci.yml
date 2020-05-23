@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Generate HTML
+      run: ./generate team >team.html
+    - name: Publish
+      run: |
+        git checkout --orphan gh-pages
+        git config --global user.email "alex@pdp7.net"
+        git config --global user.name "GitHub Actions"
+        git rm -r --cached .
+        git add team.html
+        git commit -m 'Deploy'
+        git push origin HEAD:gh-pages --force
+

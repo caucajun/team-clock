@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -ue
+
+TEAM=$1
+
+function team_html {
+    cat $TEAM | {
+        while IFS=';' read who tz ; do
+            cat <<EOF
+                <dt>$who</dt>
+                <dd><clock-element timezone="$tz"/></dd>
+EOF
+        done
+    }
+}
+
+m4 -P -D team=<(team_html) index.html.m4
