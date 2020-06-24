@@ -2,8 +2,7 @@ CC, MP, MJ, JM, JB;America/Los_Angeles
 NM;America/Denver
 CT;America/Chicago
 DK,DS,JR;America/New_York
-IC;America/Chihuahua
-EC;America/Mexico_City
+IC,EC;America/Mexico_City
 FL;America/Sao_Paulo
 AC;Europe/Madrid
 HS;Asia/Kolkata
