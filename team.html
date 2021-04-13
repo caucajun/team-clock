@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <dl>
+                            <dt>CC,MP,MJ,NL,JM</dt>
+                <dd><clock-element timezone="America/Los_Angeles"/></dd>
+                <dt>NM</dt>
+                <dd><clock-element timezone="America/Denver"/></dd>
+                <dt>CT</dt>
+                <dd><clock-element timezone="America/Chicago"/></dd>
+                <dt>AG,DK,DS,JR</dt>
+                <dd><clock-element timezone="America/New_York"/></dd>
+                <dt>IC</dt>
+                <dd><clock-element timezone="America/Chihuahua"/></dd>
+                <dt>AH,EC,MO</dt>
+                <dd><clock-element timezone="America/Mexico_City"/></dd>
+                <dt>FF</dt>
+                <dd><clock-element timezone="America/Argentina/Buenos_Aires"/></dd>
+                <dt>FL</dt>
+                <dd><clock-element timezone="America/Sao_Paulo"/></dd>
+                <dt>AC,BC</dt>
+                <dd><clock-element timezone="Europe/Madrid"/></dd>
+                <dt>FA</dt>
+                <dd><clock-element timezone="Europe/Paris"/></dd>
+                <dt>HS</dt>
+                <dd><clock-element timezone="Asia/Kolkata"/></dd>
+
+        </dl>
+        <script>
+            class ClockElement extends HTMLElement {
+                constructor() {
+                    super();
+                }
+            }
+            function updateClocks() {
+                var clocks = document.getElementsByTagName('clock-element')
+                for(var i=0; i<clocks.length; i++) {
+                    var clock = clocks[i];
+                    var timezone = clock.attributes['timezone'].value;
+                    var time = new Intl.DateTimeFormat(undefined, {timeZone: timezone, hour: "2-digit", minute: "2-digit", second: "2-digit"}).format(new Date());
+                    clock.innerHTML = time + ' (' + timezone + ')';
+                }
+            }
+            customElements.define('clock-element', ClockElement);
+            window.setInterval(updateClocks, 1000);
+        </script>
+    </body>
+</html>
