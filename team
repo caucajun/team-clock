@@ -1,6 +1,6 @@
-CC,MP,MJ,NL,JM;America/Los_Angeles
+MP,MJ,NL,JM;America/Los_Angeles
 NM;America/Denver
-CT;America/Chicago
+CT,CC;America/Chicago
 AG,DK,DS,JR;America/New_York
 IC;America/Chihuahua
 AH,EC,MO;America/Mexico_City
